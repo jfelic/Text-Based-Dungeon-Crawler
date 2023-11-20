@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.Random;
+
 public class Enemy {
     public int maxHealth = 75;
     public int maxAttackDamage = 25;
