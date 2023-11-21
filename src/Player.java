@@ -17,8 +17,8 @@ public class Player {
     Player (Scanner in) {
         System.out.println("What is your name?: ");
         this.name = in.nextLine();
-        System.out.println("Okay " + name + ", " + "What kind of fighter would you describe yourself as?: ");
-        System.out.println("1. Strong\n2. Intellectual\n3. Accurate\n4. Cunning");
+        System.out.println("\nOkay " + name + ", " + "how would you describe yourself?");
+        System.out.println("1. Strong and reliable\n2. Intelligent/thinker\n3. Accurate and to the point\n4. Cunning when need be");
         fighterType = in.nextInt();
         in.nextLine();
 
@@ -26,19 +26,23 @@ public class Player {
         if(this.fighterType == 1) {
             this.passive = "Candy Crusher";
             this.maxAttackDamage = 60;
-            System.out.println("Oh so you're a Candy Crusher then, I see. What do you think are your strengths?");
+            System.out.println("--------------------------------------");
+            System.out.println("Oh so you're a Candy Crusher then, I see.");
         } else if(this.fighterType == 2){
             this.passive = "Wizard";
             this.numOfPotions = 5;
-            System.out.println("Oh so you're a Wizard then, I see. What do you think are your strengths?");
+            System.out.println("--------------------------------------");
+            System.out.println("Oh so you're a Wizard then, I see.");
         } else if(this.fighterType == 3) {
             this.passive = "Archer";
             this.accuracy = 95;
-            System.out.println("Oh so you're a Archer then, I see. What do you think are your strengths?");
+            System.out.println("--------------------------------------");
+            System.out.println("Oh so you're a Archer then, I see.");
         } else {
-            this.passive = "Assassin";
+            this.passive = "Rogue";
             this.dodgePercentage = 20;
-            System.out.println("Oh so you're a Assassin then, I see. What do you think your strengths are?");
+            System.out.println("--------------------------------------");
+            System.out.println("Oh so you're a Rogue then,");
         }
 
         /* ---Stat Allocation---
@@ -54,23 +58,24 @@ public class Player {
             int userStatChoice = in.nextInt();
             if (userStatChoice == 1) {
                 this.maxHealth += 5;
-                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\n Dodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
-
+                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\nDodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
+                System.out.println("--------------------------------------");
             } else if (userStatChoice == 2) {
                 this.maxAttackDamage += 2;
-                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\n Dodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
-
+                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\nDodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
+                System.out.println("--------------------------------------");
             } else if (userStatChoice == 3) {
                 this.accuracy += 1;
-                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\n Dodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
-
+                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\nDodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
+                System.out.println("--------------------------------------");
             } else if (userStatChoice == 4) {
                 this.dodgePercentage += 2;
-                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\n Dodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
-
+                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\nDodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
+                System.out.println("--------------------------------------");
             } else {
                 this.luck += 5;
-                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\n Dodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
+                System.out.printf("Max Health: %d\nMax Damage: %d\nAccuracy: %d\nDodge Percentage: %d\nLuck: %d\n", this.maxHealth, this.maxAttackDamage,this.accuracy,this.dodgePercentage,this.luck);
+                System.out.println("--------------------------------------");
             }
         }
         in.nextLine();
