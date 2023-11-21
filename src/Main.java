@@ -49,7 +49,7 @@ public class Main {
         System.out.print("Say your goodbye to the merchant: ");
         String goodbye = in.nextLine();
         System.out.println();
-        System.out.println("With your goodbye said and done, you look down the path laid out before you. Looming far and high above is Candy Cavern. You begin walking....");
+        System.out.println("With your goodbye said and done, you look down the path laid out before you. Looming far and high above you is Candy Cavern. You begin walking....");
         System.out.println("--------------------------------------");
 
         // Entering the Cavern //

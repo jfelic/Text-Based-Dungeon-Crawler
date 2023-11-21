@@ -13,7 +13,7 @@ public class Player {
     int luck = 15;
     int numOfPotions = 3;
     int healthPotionValue = 30;
-    //int healthPotionDropChance = 50; //Percentage
+    int healthPotionDropChance = 5; //Percentage
 
     Player (Scanner in) {
         this.name = in.nextLine();
@@ -97,6 +97,17 @@ public class Player {
         in.nextLine();
     }
 
+    // handle combat option //
+    public void handleCombatOption(Player player, Enemy enemy, Random rand, Scanner in, int combatOption) {
+        if (combatOption == 1) {
+            player.performAttack(player, enemy, rand, in);
+        } else if (combatOption == 2) {
+            player.drinkPotion();
+        } else if (combatOption == 3) {
+            player.flee();
+        }
+    }
+
     // Is player alive check //
     public boolean isAlive() {
         if (this.currentHealth > 0 ) {
@@ -126,6 +137,13 @@ public class Player {
         int attack = rand.nextInt(player.getMaxAttack());
         System.out.println("You hit " + enemy.getEnemyType() + " for " + attack + " damage");
         enemy.loseCurrentHealth(attack);
+        if (enemy.getCurrentHealth() > 0) {
+            System.out.println(enemy.getEnemyType() + "'s current health: " + enemy.getCurrentHealth());    
+        } else {
+            System.out.println("Enemy defeated!");
+            player.healthPotionDrop(rand, enemy);
+        }
+
     }
 
     // Drink Potion //
@@ -139,14 +157,16 @@ public class Player {
 
     }
 
-    // handle combat option //
-    public void handleCombatOption(Player player, Enemy enemy, Random rand, Scanner in, int combatOption) {
-        if (combatOption == 1) {
-            player.performAttack(player, enemy, rand, in);
-        } else if (combatOption == 2) {
-            player.drinkPotion();
-        } else if (combatOption == 3) {
-            player.flee();
+    // Chance of potion drop //
+    public void healthPotionDrop(Random rand, Enemy enemy) {
+        int potionDrop = rand.nextInt(100);
+        System.out.println("Potion drop random value: " + potionDrop);
+        if (potionDrop >=0 && potionDrop <= 5) {
+            this.numOfPotions += 1;
+            System.out.println("The " + enemy.getEnemyType() + " dropped a potion! You've added it to your inventory.");
+            System.out.println("Total potions = " + this.numOfPotions);
         }
     }
+
+
 }
