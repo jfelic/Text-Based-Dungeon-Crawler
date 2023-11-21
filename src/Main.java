@@ -17,16 +17,10 @@ public class Main {
         in.nextLine();
 
         if (userInput == 1) {
-            GAME:
-            while(running) {
-                System.out.println("--------------------------------------");
-                System.out.println("Greetings adventurer! I have a very important request, and from the looks of you, you're the one for the job.");
-                Player player = new Player(in);
-
-                Enemy enemy = new Enemy(rand);
-                System.out.println("--------------------------------------");
-                running = false;
-            }
+            System.out.println("--------------------------------------");
+            System.out.println("Greetings adventurer! I have a very important request, and from the looks of you, you're the one for the job.");
+            Player player = new Player(in);
+            System.out.println("--------------------------------------");
         } else if(userInput == 2) {
             System.out.println("Created by Julian Feliciano");
             System.out.println("2023");
