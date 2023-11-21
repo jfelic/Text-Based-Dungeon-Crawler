@@ -5,7 +5,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
         Random rand = new Random();
-        boolean running = true;
+
+        // Declare player variable //
+        Player player = null;
 
         System.out.println("## Welcome to Candy Cavern! ##");
         System.out.println("--------------------------------------");
@@ -28,7 +30,7 @@ public class Main {
             if (responseToMerchant == 1) {
                 System.out.println("Mysterious Merchant: \"I knew I was right about you! Now then, what should I call you adventurer?\"");
                 System.out.print("Input name: ");
-                Player player = new Player(in);
+                player = new Player(in);
             } else if (responseToMerchant == 2) {
                 System.out.println("\nMysterious Merchant: \"No? It seems I was wrong about you... good day then!\"");
                 System.out.println("Your journey ends before it even began. Not a very good run, but thanks for playing anyways!");
@@ -52,27 +54,25 @@ public class Main {
 
         // Entering the Cavern //
 
-        // //Testing combat//
-        // System.out.println("You encounter a " + Enemy enemy = new Enemy(rand));
-
-
-
-
-
-
-
-
-        // // Main Methods //
-        // void displayCombatOptions() {
-        //     System.out.println("Choose an action:");
-        //     System.out.println("1. Attack");
-        //     System.out.println("2. Use Potion");
-        //     System.out.println("3. Flee");
-        // }
-
-        // public void performAttack (Player player, Enemy enemy) {
-        //     int damage = calculateDamage(player, enemy);
-        //     enemy.takeDamage(damage);
-        //     System.out.println("You dealt " + damage + " damage to the " + enemy.getType());
+        //Testing combat//
+        Enemy enemy = new Enemy(rand);
+        System.out.println("You encounter a " + enemy.getEnemyType() + "!");
+        System.out.println("Your current health: " + player.getCurrentHealth());
+        System.out.println(enemy.getEnemyType() + "'s current health: " + enemy.currentHealth);
+        while (player.isAlive() && enemy.isAlive()) {
+            displayCombatOptions();
+            int combatOption = in.nextInt();
+            in.nextLine();
+            player.handleCombatOption(player, enemy, rand, in, combatOption);
         }
+    }
+
+    // Display Combat options //
+    public static void displayCombatOptions() {
+        System.out.println("Choose an action:");
+        System.out.println("1. Attack");
+        System.out.println("2. Use Potion");
+        System.out.println("3. Flee");
+    }
 }
+

@@ -6,12 +6,13 @@ public class Player {
     int fighterType;
     String passive;
     int maxHealth = 100;
+    int currentHealth = 100;
     int maxAttackDamage = 50;
     int dodgePercentage = 5;
     int accuracy = 85;
     int luck = 15;
     int numOfPotions = 3;
-    //int healthPotionValue = 30;
+    int healthPotionValue = 30;
     //int healthPotionDropChance = 50; //Percentage
 
     Player (Scanner in) {
@@ -94,9 +95,58 @@ public class Player {
             }
         }
         in.nextLine();
+    }
 
-        
-        
- 
+    // Is player alive check //
+    public boolean isAlive() {
+        if (this.currentHealth > 0 ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+//------------ GETTERS----------//
+    // Get player passive //
+    public String getPassive() {
+        return this.passive;
+    }
+
+    // Get Max Attack Damage //
+    public int getMaxAttack () {
+        return this.maxAttackDamage;
+    }
+
+    // Get current health //
+    public int getCurrentHealth () {
+        return this.currentHealth;
+    }
+
+    // Player Attack //
+    public void performAttack (Player player, Enemy enemy, Random rand, Scanner in ) {
+        int attack = rand.nextInt(player.getMaxAttack());
+        System.out.println("You hit " + enemy.getEnemyType() + " for " + attack + " damage");
+        enemy.loseCurrentHealth(attack);
+    }
+
+    // Drink Potion //
+    public void drinkPotion() {
+        this.currentHealth += healthPotionValue;
+    }
+
+    // Attempt to flee //
+    public void flee() {
+        double fleeChance = this.luck / 100;
+
+    }
+
+    // handle combat option //
+    public void handleCombatOption(Player player, Enemy enemy, Random rand, Scanner in, int combatOption) {
+        if (combatOption == 1) {
+            player.performAttack(player, enemy, rand, in);
+        } else if (combatOption == 2) {
+            player.drinkPotion();
+        } else if (combatOption == 3) {
+            player.flee();
+        }
     }
 }
