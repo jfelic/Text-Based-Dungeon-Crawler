@@ -16,8 +16,7 @@ public class Main {
         System.out.println("3. Exit");
         
         int userInput = in.nextInt();
-        in.nextLine();
-
+        consumeWhitespace(in);
         // Handling user input from the menu //
         if (userInput == 1) {
             System.out.println("--------------------------------------");
@@ -26,7 +25,7 @@ public class Main {
             System.out.println("Something must be done! What say you?\"");
             System.out.println("\n1. \"Don't worry, I will take care of the Candy King and his minions for you!\"\n2. \"No thanks, I'm busy.\"");
             int responseToMerchant = in.nextInt();
-            in.nextLine();
+            consumeWhitespace(in);
             if (responseToMerchant == 1) {
                 System.out.println("Mysterious Merchant: \"I knew I was right about you! Now then, what should I call you adventurer?\"");
                 System.out.print("Input name: ");
@@ -62,9 +61,13 @@ public class Main {
         while (player.isAlive() && enemy.isAlive()) {
             displayCombatOptions();
             int combatOption = in.nextInt();
-            in.nextLine();
+            consumeWhitespace(in);
             player.handleCombatOption(player, enemy, rand, in, combatOption);
+            enemy.performAttack(player, enemy, rand, in);
         }
+
+        System.out.println("--------------------------------------");
+        System.out.println("\"A monster this far from the Candy Cavern?\" you think. \"That strange merchant might be right; things are getting bad....\"");
     }
 
     // Display Combat options //
@@ -73,6 +76,11 @@ public class Main {
         System.out.println("1. Attack");
         System.out.println("2. Use Potion");
         System.out.println("3. Flee");
+    }
+
+    // Consume whitespace method cause I can //
+    public static void consumeWhitespace (Scanner in) {
+        in.nextLine();
     }
 }
 

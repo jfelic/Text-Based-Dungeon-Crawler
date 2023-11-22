@@ -57,4 +57,23 @@ public class Enemy {
     public void loseCurrentHealth(int attack) {
         this.currentHealth -= attack;
     }
+
+    // Enemy attack //
+    public void performAttack (Player player, Enemy enemy, Random rand, Scanner in) {
+        if (enemy.isAlive() && !enemy.getEnemyType().equals("Sweet Shooter")) {
+            int attackPercentage = rand.nextInt(101);
+            if (attackPercentage <= 100 - (100 - player.getDodge())) {
+                System.out.println("The " + enemy.getEnemyType() + " missed!"); 
+                System.out.println("Your current health: " + player.getCurrentHealth());
+                System.out.println(attackPercentage);
+            } else {
+                System.out.println();
+                int attack = rand.nextInt(maxAttackDamage + 1);
+                player.loseCurrentHealth(attack);
+                System.out.println("The " + enemy.getEnemyType() + " hit you for " + attack + " damage!");
+                System.out.println("Your current health: " + player.getCurrentHealth());
+                System.out.println(attackPercentage);
+            }   
+        }
+    }
 }
